@@ -1,0 +1,16 @@
+/* Resets */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*:focus{
+  outline: 0
+}
+/* Resets */
+
+/* Globals */
+body {
+  margin: 0;
+}
+/* Globals */

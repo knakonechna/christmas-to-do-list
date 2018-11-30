@@ -1,0 +1,30 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* Main container styles */
+.main-container {
+  background: #4BA6A9;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  overflow: hidden;
+}
+.main-wrap{
+  width: 50%;
+  padding: 15px 0 ;
+}
+.title{
+  color: #fff;
+  text-transform: capitalize;
+}
+/* Main container styles */
+@media only screen and (max-width: 1024px) {
+  .main-wrap{
+    width: 100%;
+  }
+  .main-container{
+    padding: 0 15px;
+  }
+}

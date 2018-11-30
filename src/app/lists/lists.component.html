@@ -1,0 +1,34 @@
+<div>
+  <h2 class="subtitle">
+    Нou have <span class="count-of-tasks">{{lists.length}}</span> assignments that you must do before christmas is coming
+  </h2>
+  <div class="wrap-for-input">
+    <input class="input-for-to-do" placeholder="A goal that you would like to fulfill before Christmas" #input>
+    <button
+      (click)="addTodo(input.value); input.value=''"
+      class="add-new-to-do"
+      mat-raised-button
+    >
+      Add New To Do
+    </button>
+  </div>
+  <ul class="lists">
+    <li
+      *ngFor="let list of lists"
+      (click)="onSelect(list)"
+      [class.selected]="list.isDone"
+    >
+      <img src="../../assets/image/snow.png" alt="">
+      <span class="badge">{{list.text}}</span>
+    </li>
+  </ul>
+  <div *ngIf="selectedList" class="remove-button-wrap">
+    <button
+      (click)="removeSelected()"
+      class="remove-selected"
+      mat-raised-button
+    >
+      Remove Selected
+    </button>
+  </div>
+</div>
