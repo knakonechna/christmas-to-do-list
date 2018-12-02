@@ -9,14 +9,10 @@ import { List } from './list';
 })
 export class ListsComponent implements OnInit {
   constructor(private toDoService: TodoService) { }
-  list: List = {
-    text: 'Buy presents',
-    isDone: false,
-  };
   lists: List[];
   selectedList: number;
-
   getTask(): void {
+    localStorage.clear();
     TodoService.getTodoList(JSON.parse(localStorage.getItem('lists')));
     this.lists = JSON.parse(localStorage.getItem('lists'));
   }

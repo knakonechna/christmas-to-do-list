@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { List } from '../lists/list';
-import {LISTS} from '../lists/mock-lists';
 import {LocalStorageService} from './local-storage.service';
+import {GetRandomIdService} from './get-random-id.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(private localStorageService: LocalStorageService, getRandomIdService: GetRandomIdService) { }
 
   static getTodoList(lists: List[]) {
      LocalStorageService.saveToDoInLocalStorage(lists);
   }
   static addTasks(list: string, lists: List[]) {
     lists.push({
-     text: list,
-     isDone: false,
+      id: GetRandomIdService.getID(),
+      text: list,
+      isDone: false,
     });
     this.getTodoList(lists);
     return lists;
