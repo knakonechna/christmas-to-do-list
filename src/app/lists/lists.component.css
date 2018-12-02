@@ -27,6 +27,7 @@
   color: #fff;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .lists li span{
@@ -78,6 +79,9 @@
   background: #649477;
   width: 25%;
 }
+.edit-tasks{
+  background: #4b79a9;
+}
 /*Remove selected button style*/
 
 /*input style*/
@@ -94,6 +98,13 @@
   border-radius: 5px 0 0 5px;
   border: 0;
   padding-left: 15px;
+}
+.edit-input{
+  color: #fff;
+  border: 0;
+  border-bottom: 1px solid#fff;
+  padding-left: 10px;
+  background: #4BA6A9;
 }
 /*input style*/
 

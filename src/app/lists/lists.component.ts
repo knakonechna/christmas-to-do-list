@@ -8,18 +8,19 @@ import { List } from './list';
   styleUrls: ['./lists.component.css'],
 })
 export class ListsComponent implements OnInit {
-  constructor(private toDoService: TodoService) { }
+  constructor(private toDoService: TodoService) {}
   lists: List[];
   selectedList: number;
+
   getTask(): void {
-    localStorage.clear();
-    TodoService.getTodoList(JSON.parse(localStorage.getItem('lists')));
+    this.toDoService.getTodoList(JSON.parse(localStorage.getItem('lists')));
     this.lists = JSON.parse(localStorage.getItem('lists'));
   }
 
   ngOnInit() {
     this.getTask();
   }
+
   isNoSelected(): void {
     this.selectedList = this.lists.filter(item => item.isDone).length;
   }
@@ -28,11 +29,18 @@ export class ListsComponent implements OnInit {
     this.isNoSelected();
   }
   addTodo(list: string): void {
-    this.lists = TodoService.addTasks(list, this.lists);
+    this.lists = this.toDoService.addTasks(list, this.lists);
     this.isNoSelected();
   }
   removeSelected(): void {
-    this.lists = TodoService.removeSelected(this.lists);
+    this.lists = this.toDoService.removeSelected(this.lists);
     this.isNoSelected();
+  }
+  changeEdit(list): void {
+    this.toDoService.changeIsEdit(list, this.lists);
+  }
+  editTodo(id: string, list: string): void {
+    this.changeEdit(list);
+    this.toDoService.editTask(id, list, this.lists);
   }
 }

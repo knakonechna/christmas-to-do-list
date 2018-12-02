@@ -3,7 +3,12 @@
     Нou have <span class="count-of-tasks">{{lists.length}}</span> assignments that you must do before christmas is coming
   </h2>
   <div class="wrap-for-input">
-    <input class="input-for-to-do" placeholder="A goal that you would like to fulfill before Christmas" #input>
+    <input
+      type="text"
+      class="input-for-to-do"
+      placeholder="A goal that you would like to fulfill before Christmas"
+      (keyup.enter)="addTodo(input.value); input.value=''"
+      #input>
     <button
       (click)="addTodo(input.value); input.value=''"
       class="add-new-to-do"
@@ -15,11 +20,41 @@
   <ul class="lists">
     <li
       *ngFor="let list of lists"
-      (click)="onSelect(list)"
       [class.selected]="list.isDone"
     >
-      <img src="../../assets/image/snow.png" alt="">
-      <span>{{list.text}}</span>
+      <div
+        *ngIf="!list.isEdit"
+      >
+        <img src="../../assets/image/snow.png" alt="">
+        <span
+          (click)="onSelect(list)"
+        >
+          {{list.text}}
+        </span>
+      </div>
+        <input
+          *ngIf="list.isEdit"
+          class="edit-input"
+          [(ngModel)]="list.text"
+          (keyup.enter)="editTodo(list.id, edit.value)"
+          #edit
+        >
+      <button
+        mat-raised-button
+        class="edit-tasks"
+        (click)="changeEdit(list)"
+        *ngIf="!list.isEdit"
+      >
+        Edit
+      </button>
+      <button
+        mat-raised-button
+        class="edit-tasks"
+        (click)="changeEdit(list)"
+        *ngIf="list.isEdit"
+      >
+        Save
+      </button>
     </li>
   </ul>
   <div *ngIf="selectedList" class="remove-button-wrap">
