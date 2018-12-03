@@ -22,25 +22,25 @@ export class ListsComponent implements OnInit {
   }
 
   isNoSelected(): void {
-    this.selectedList = this.lists.filter(item => item.isDone).length;
+    this.selectedList = this.toDoService.isNoSelected();
   }
   onSelect(list: List): void {
     list.isDone = !list.isDone;
     this.isNoSelected();
   }
   addTodo(list: string): void {
-    this.lists = this.toDoService.addTasks(list, this.lists);
+    this.lists = this.toDoService.addTasks(list);
     this.isNoSelected();
   }
   removeSelected(): void {
-    this.lists = this.toDoService.removeSelected(this.lists);
+    this.lists = this.toDoService.removeSelected();
     this.isNoSelected();
   }
   changeEdit(list): void {
-    this.toDoService.changeIsEdit(list, this.lists);
+    this.lists = this.toDoService.changeIsEdit(list);
   }
   editTodo(id: string, list: string): void {
+    this.toDoService.editTask(id, list);
     this.changeEdit(list);
-    this.toDoService.editTask(id, list, this.lists);
   }
 }
