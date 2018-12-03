@@ -8,20 +8,18 @@ import {Task} from '../lists/list';
   styleUrls: ['./edit-input.component.css']
 })
 export class EditInputComponent implements OnInit {
-  @Input() data: List;
-  @Output() changeEdit = new EventEmitter<boolean>();
+  @Input() data: Task;
+  @Output() changeEdit = new EventEmitter<Task>();
   constructor(private todoService: TodoService) { }
-
-  ngOnInit() {
-    console.log(this);
-  }
 
   private onChangeEdit(item: Task): void {
     this.changeEdit.emit(item);
   }
-  private editTodo(id: string, text: string): void {
-    this.todoService.editTask(id, text);
-    this.changeEdit.emit();
+  private editTodo(item: Task, text: string): void {
+    this.todoService.editTask(item.id, text);
+    this.changeEdit.emit(item);
   }
 
+  ngOnInit(): void {
+  }
 }

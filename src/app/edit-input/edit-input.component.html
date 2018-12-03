@@ -4,7 +4,7 @@
     *ngIf="data.isEdit"
     class="edit-input"
     [(ngModel)]="data.text"
-    (keyup.enter)="editTodo(data.id, edit.value)"
+    (keyup.enter)="editTodo(data, edit.value)"
   >
   <button
     mat-raised-button

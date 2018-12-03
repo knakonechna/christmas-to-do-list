@@ -20,7 +20,6 @@
 .lists li{
   position: relative;
   list-style: none;
-  cursor: pointer;
   padding: 5px 0;
   font-size: 18px;
   text-transform: capitalize;
@@ -56,6 +55,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 /*List styles*/
 
