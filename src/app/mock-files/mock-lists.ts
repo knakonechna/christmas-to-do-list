@@ -1,7 +1,7 @@
-import { List } from './list';
+import { Task } from '../lists/list';
 import {GetRandomIdService} from '../services/get-random-id.service';
 
-export const LISTS: List[] = [
+export const TASKS: Task[] = [
   {
     id: GetRandomIdService.getID(),
     text: 'Buy presents',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../services/todo.service';
-import { List } from './list';
+import { Task } from './list';
 
 @Component({
   selector: 'app-lists',
@@ -9,38 +9,45 @@ import { List } from './list';
 })
 export class ListsComponent implements OnInit {
   constructor(private toDoService: TodoService) {}
-  lists: List[];
-  selectedList: number;
+  lists: Task[];
+  selected: number;
 
-  getTask(): void {
-    this.toDoService.getTodoList(JSON.parse(localStorage.getItem('lists')));
-    this.lists = JSON.parse(localStorage.getItem('lists'));
+  private getTask(): void {
+    this.toDoService.saveTodoList(JSON.parse(localStorage.getItem('tasks')));
+    this.lists = this.toDoService.tasksArray;
   }
 
   ngOnInit() {
     this.getTask();
   }
 
-  isNoSelected(): void {
-    this.selectedList = this.toDoService.isNoSelected();
+  private isAnyTaskSelected(): void {
+    this.toDoService.isSelected();
+    this.selected = this.toDoService.selectedList;
   }
-  onSelect(list: List): void {
-    this.lists = this.toDoService.onSelect(list);
-    this.isNoSelected();
+
+  private onSelect(item: Task): void {
+    this.toDoService.onSelect(item);
+    this.lists = this.toDoService.tasksArray;
+    this.isAnyTaskSelected();
   }
-  addTodo(list: string): void {
-    this.lists = this.toDoService.addTasks(list);
-    this.isNoSelected();
+
+  private addTodo(item: string): void {
+    this.toDoService.addTasks(item);
+    this.lists = this.toDoService.tasksArray;
+    this.isAnyTaskSelected();
   }
-  removeSelected(): void {
-    this.lists = this.toDoService.removeSelected();
-    this.isNoSelected();
+  private removeSelected(): void {
+    this.toDoService.removeSelected();
+    this.lists = this.toDoService.tasksArray;
+    this.isAnyTaskSelected();
   }
-  changeEdit(list): void {
-    this.lists = this.toDoService.changeIsEdit(list);
+  private changeEdit(item): void {
+    this.toDoService.changeIsEdit(item);
+    this.lists = this.toDoService.tasksArray;
   }
-  editTodo(id: string, list: string): void {
-    this.toDoService.editTask(id, list);
-    this.changeEdit(list);
+  private editTodo(id: string, text: string): void {
+    this.toDoService.editTask(id, text);
+    this.changeEdit(text);
   }
 }

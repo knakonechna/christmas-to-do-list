@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {List} from '../lists/list';
-import {LISTS} from '../lists/mock-lists';
+import {Task} from '../lists/list';
+import {TASKS} from '../mock-files/mock-lists';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import {LISTS} from '../lists/mock-lists';
 export class LocalStorageService {
 
   constructor() { }
-  static saveToDoInLocalStorage(lists: List[]) {
-    window.localStorage.setItem('lists', JSON.stringify(lists || LISTS));
+  public static saveToDoInLocalStorage(tasks: Task[]) {
+    window.localStorage.setItem('tasks', JSON.stringify(tasks || TASKS));
   }
 }

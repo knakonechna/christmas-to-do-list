@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { List } from '../lists/list';
+import { Task } from '../lists/list';
 import {LocalStorageService} from './local-storage.service';
 import {GetRandomIdService} from './get-random-id.service';
 
@@ -8,46 +8,45 @@ import {GetRandomIdService} from './get-random-id.service';
   providedIn: 'root'
 })
 export class TodoService {
-  listsArray: List[];
-  constructor(private localStorageService: LocalStorageService) { }
+  tasksArray: Task[];
+  selectedList: number;
+  constructor() { }
 
-    onSelect(list: List): List[] {
-      this.listsArray[this.getTaskByID(list.id)].isDone = !list.isDone;
-      return this.listsArray;
-    }
-    isNoSelected(): number {
-      return this.listsArray.filter(item => item.isDone).length;
-    }
-    getTodoList(lists: List[]) {
-       LocalStorageService.saveToDoInLocalStorage(lists);
-       this.listsArray = lists;
-    }
-    addTasks(list: string) {
-    this.listsArray.push({
+  getTodoList(): void {
+    this.tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
+  }
+  saveTodoList(item: Task[]) {
+    LocalStorageService.saveToDoInLocalStorage(item);
+    this.getTodoList();
+  }
+  onSelect(item: Task): void {
+    this.tasksArray[this.getTaskByID(item.id)].isDone = !item.isDone;
+  }
+  isSelected(): void {
+    this.selectedList = this.tasksArray.filter(item => item.isDone).length;
+  }
+  changeIsEdit(item: Task): void {
+    this.tasksArray[this.getTaskByID(item.id)].isEdit = !item.isEdit;
+    this.saveTodoList(this.tasksArray);
+  }
+  addTasks(text: string) {
+    this.tasksArray.push({
       id: GetRandomIdService.getID(),
-      text: list,
+      text: text,
       isDone: false,
       isEdit: false,
     });
-    this.getTodoList(this.listsArray);
-    return this.listsArray;
+    this.saveTodoList(this.tasksArray);
   }
-   removeSelected() {
-    const newListOfTask = this.listsArray.filter(selectable => !selectable.isDone);
-    this.getTodoList(newListOfTask);
-    return newListOfTask;
+  removeSelected() {
+    this.tasksArray = this.tasksArray.filter(selectable => !selectable.isDone);
+    this.saveTodoList(this.tasksArray);
   }
-   editTask(id: string, list: string) {
-    this.listsArray[this.getTaskByID(id)].text = list;
-    this.getTodoList(this.listsArray);
+  editTask(id: string, text: string) {
+    this.tasksArray[this.getTaskByID(id)].text = text;
+    this.saveTodoList(this.tasksArray);
   }
-   getTaskByID(id: string): number {
-    return this.listsArray.findIndex(x => x.id === id);
-  }
-
-  changeIsEdit(list: List): List[] {
-    this.listsArray[this.getTaskByID(list.id)].isEdit = !list.isEdit;
-    this.getTodoList(this.listsArray);
-    return this.listsArray;
+  getTaskByID(id: string): number {
+    return this.tasksArray.findIndex(x => x.id === id);
   }
 }
