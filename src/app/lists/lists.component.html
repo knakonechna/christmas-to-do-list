@@ -17,28 +17,23 @@
       Add New To Do
     </button>
   </div>
+  <span class="prompt-text">*choose tasks that you completed</span>
   <ul class="lists">
     <li
       *ngFor="let list of lists"
       [class.selected]="list.isDone"
     >
       <div
+        class="task-view"
         *ngIf="!list.isEdit"
+        (click)="onSelect(list)"
       >
         <img src="../../assets/image/snow.png" alt="">
         <span
-          (click)="onSelect(list)"
         >
           {{list.text}}
         </span>
       </div>
-        <input
-          *ngIf="list.isEdit"
-          class="edit-input"
-          [(ngModel)]="list.text"
-          (keyup.enter)="editTodo(list.id, edit.value)"
-          #edit
-        >
       <button
         mat-raised-button
         class="edit-tasks"
@@ -47,14 +42,12 @@
       >
         Edit
       </button>
-      <button
-        mat-raised-button
-        class="edit-tasks"
-        (click)="changeEdit(list)"
+      <app-edit-input
         *ngIf="list.isEdit"
-      >
-        Save
-      </button>
+        [data]="list"
+        (changeEdit)="changeEdit(list)"
+        class="edit-input"
+      ></app-edit-input>
     </li>
   </ul>
   <div *ngIf="selected" class="remove-button-wrap">

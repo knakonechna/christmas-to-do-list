@@ -1,19 +1,26 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-/* Main container styles */
-.main-container {
-  background: #4BA6A9;
+/* Main container and app-wrap styles */
+.app-wrap{
   min-height: 100vh;
   height: auto;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.main-container {
+  background: #4BA6A9;
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   overflow: hidden;
+  flex: 2;
 }
 .main-wrap{
   width: 50%;
-  padding: 15px 0 ;
+  flex: 1;
+  padding: 45px 0 ;
 }
 .title{
   color: #fff;

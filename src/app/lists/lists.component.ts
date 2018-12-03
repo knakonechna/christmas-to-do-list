@@ -15,6 +15,7 @@ export class ListsComponent implements OnInit {
   private getTask(): void {
     this.toDoService.saveTodoList(JSON.parse(localStorage.getItem('tasks')));
     this.lists = this.toDoService.tasksArray;
+    this.isAnyTaskSelected();
   }
 
   ngOnInit() {
@@ -37,17 +38,15 @@ export class ListsComponent implements OnInit {
     this.lists = this.toDoService.tasksArray;
     this.isAnyTaskSelected();
   }
+
   private removeSelected(): void {
     this.toDoService.removeSelected();
     this.lists = this.toDoService.tasksArray;
     this.isAnyTaskSelected();
   }
+
   private changeEdit(item): void {
     this.toDoService.changeIsEdit(item);
     this.lists = this.toDoService.tasksArray;
-  }
-  private editTodo(id: string, text: string): void {
-    this.toDoService.editTask(id, text);
-    this.changeEdit(text);
   }
 }

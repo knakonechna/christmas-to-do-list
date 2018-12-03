@@ -1,0 +1,17 @@
+<div class="save-new-data">
+  <input
+    #edit
+    *ngIf="data.isEdit"
+    class="edit-input"
+    [(ngModel)]="data.text"
+    (keyup.enter)="editTodo(data.id, edit.value)"
+  >
+  <button
+    mat-raised-button
+    class="edit-tasks"
+    *ngIf="data.isEdit"
+    (click)="onChangeEdit(data)"
+  >
+    Save
+  </button>
+</div>

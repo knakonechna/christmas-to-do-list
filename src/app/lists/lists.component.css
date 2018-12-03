@@ -28,6 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
 }
 
 .lists li span{
@@ -49,6 +50,12 @@
   left: 0;
   background: #c1e0dc;
   transition: .4s linear;
+}
+
+.task-view{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 /*List styles*/
 
@@ -72,13 +79,16 @@
   font-weight: 700;
   letter-spacing: 0.6px;
 }
+
 .remove-selected {
   background: #ED4A67;
 }
+
 .add-new-to-do{
   background: #649477;
   width: 25%;
 }
+
 .edit-tasks{
   background: #4b79a9;
 }
@@ -92,6 +102,7 @@
   justify-content: space-between;
   padding: 10px 0;
 }
+
 .input-for-to-do{
   width: 75%;
   height: 36px;
@@ -99,19 +110,29 @@
   border: 0;
   padding-left: 15px;
 }
+
 .edit-input{
-  color: #fff;
-  border: 0;
-  border-bottom: 1px solid#fff;
-  padding-left: 10px;
-  background: #4BA6A9;
+  width: 100%
 }
 /*input style*/
 
+/*prompt style*/
+.prompt-text{
+  color: #fff;
+  display: block;
+  text-align: left;
+  line-height: 0px;
+  padding-left: 10px;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+/*prompt style*/
 @media only screen and (max-width: 480px) {
   .wrap-for-input{
     flex-wrap: wrap;
   }
+
   .input-for-to-do, .add-new-to-do{
     width: 100%;
   }

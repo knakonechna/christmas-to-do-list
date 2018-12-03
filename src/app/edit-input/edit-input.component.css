@@ -1,0 +1,19 @@
+.save-new-data{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.save-new-data input{
+  flex: 2;
+  border: 0;
+  background: transparent;
+  font-size: 20px;
+  border-bottom: 1px solid#fff;
+  color: #fff;
+}
+.edit-tasks{
+  background: #4b64a9;
+  color: #fff;
+  font-weight: bold;
+}
