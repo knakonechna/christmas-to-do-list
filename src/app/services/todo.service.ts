@@ -11,6 +11,10 @@ export class TodoService {
   listsArray: List[];
   constructor(private localStorageService: LocalStorageService) { }
 
+    onSelect(list: List): List[] {
+      this.listsArray[this.getTaskByID(list.id)].isDone = !list.isDone;
+      return this.listsArray;
+    }
     isNoSelected(): number {
       return this.listsArray.filter(item => item.isDone).length;
     }

@@ -25,7 +25,7 @@ export class ListsComponent implements OnInit {
     this.selectedList = this.toDoService.isNoSelected();
   }
   onSelect(list: List): void {
-    list.isDone = !list.isDone;
+    this.lists = this.toDoService.onSelect(list);
     this.isNoSelected();
   }
   addTodo(list: string): void {
