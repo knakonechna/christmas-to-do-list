@@ -1,19 +1,27 @@
+
+/*edit input style*/
+
 .save-new-data{
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
+.save-new-data label{
+  flex: 2;
+}
 
 .save-new-data input{
-  flex: 2;
+  width: 100%;
   border: 0;
   background: transparent;
   font-size: 20px;
-  border-bottom: 1px solid#fff;
+  border-bottom: 1px solid#4b64a9;
   color: #fff;
+  padding: 6px 10px;
 }
 .edit-tasks{
   background: #4b64a9;
   color: #fff;
   font-weight: bold;
 }
+/*edit input style*/

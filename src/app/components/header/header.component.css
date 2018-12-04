@@ -20,14 +20,18 @@
 }
 .header-nav li{
   list-style: none;
-  padding: 0px 17px;
-  color: #fff;
   border-left: 1px solid#fff;
+  height: 100%;
+}
+
+.header-nav li a{
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  color: #fff;
   height: 100%;
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-family: Roboto,"Helvetica Neue",sans-serif;
+  padding: 0px 17px;
 }
 
 .header-nav li:last-child{

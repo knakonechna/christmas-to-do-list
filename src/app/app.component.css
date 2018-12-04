@@ -14,17 +14,9 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
   flex: 2;
-}
-.main-wrap{
-  width: 50%;
-  flex: 1;
-  padding: 45px 0 ;
-}
-.title{
-  color: #fff;
-  text-transform: capitalize;
 }
 /* Main container styles */
 @media only screen and (max-width: 1024px) {

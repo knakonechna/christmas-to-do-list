@@ -3,24 +3,31 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListsComponent } from './lists/lists.component';
-import { FormsModule } from '@angular/forms';
+import { ListsComponent } from './components/lists/lists.component';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import {MatButtonModule} from '@angular/material';
-import { HeaderComponent } from './header/header.component';
-import { EditInputComponent } from './edit-input/edit-input.component';
+import { HeaderComponent } from './components/header/header.component';
+import { EditInputComponent } from './components/edit-input/edit-input.component';
+import { ActiveTasksComponent } from './active-tasks/active-tasks.component';
+import { CompletedTasksComponent } from './completed-tasks/completed-tasks.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListsComponent,
     HeaderComponent,
-    EditInputComponent
+    EditInputComponent,
+    ActiveTasksComponent,
+    CompletedTasksComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
