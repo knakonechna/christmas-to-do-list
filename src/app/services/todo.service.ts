@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../lists/list';
-import {LocalStorageService} from './local-storage.service';
-import {GetRandomIdService} from './get-random-id.service';
+import { Task } from '../components/lists/list';
+import { LocalStorageService } from './local-storage.service';
+import { GetRandomIdService } from './get-random-id.service';
 
 
 @Injectable({

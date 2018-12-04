@@ -1,0 +1,25 @@
+<form
+  class="save-new-data"
+  [formGroup]="editForm"
+  (ngSubmit)="onSubmit(data)"
+>
+  <label
+    *ngIf="data.isEdit"
+  >
+    <input
+      type="text"
+      class="edit-input"
+      formControlName="task"
+      [(ngModel)]="data.text"
+      (keydown)="refineInput($event)"
+    >
+  </label>
+  <button
+    type="submit"
+    mat-raised-button
+    class="edit-tasks"
+    *ngIf="data.isEdit"
+  >
+    Save
+  </button>
+</form>

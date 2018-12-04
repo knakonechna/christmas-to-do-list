@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Task} from '../lists/list';
-import {TASKS} from '../mock-files/mock-lists';
+import { Task } from '../components/lists/list';
+import { TASKS } from '../mocks/mock-lists';
 
 @Injectable({
   providedIn: 'root'
