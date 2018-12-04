@@ -12,6 +12,9 @@ export class TodoService {
   selectedList: number;
   constructor() { }
 
+  static replaceInput(event): boolean {
+    return !(event.target.value.trim().length === 0 && event.which === 32);
+  }
   getTodoList(): void {
     this.tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
   }

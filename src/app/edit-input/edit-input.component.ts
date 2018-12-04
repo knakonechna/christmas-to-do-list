@@ -13,13 +13,20 @@ export class EditInputComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   private onChangeEdit(item: Task): void {
-    this.changeEdit.emit(item);
+    if (item.text.trim().length > 0 ) {
+      this.changeEdit.emit(item);
+    }
   }
   private editTodo(item: Task, text: string): void {
-    this.todoService.editTask(item.id, text);
-    this.changeEdit.emit(item);
+    if (text.trim().length > 0 ) {
+      this.todoService.editTask(item.id, text);
+      this.changeEdit.emit(item);
+    }
   }
 
   ngOnInit(): void {
+  }
+  private refineInput(event): boolean {
+    return TodoService.replaceInput(event);
   }
 }

@@ -8,13 +8,13 @@ import { Task } from './list';
   styleUrls: ['./lists.component.css'],
 })
 export class ListsComponent implements OnInit {
-  constructor(private toDoService: TodoService) {}
+  constructor(private todoService: TodoService) {}
   lists: Task[];
   selected: number;
 
   private getTask(): void {
-    this.toDoService.saveTodoList(JSON.parse(localStorage.getItem('tasks')));
-    this.lists = this.toDoService.tasksArray;
+    this.todoService.saveTodoList(JSON.parse(localStorage.getItem('tasks')));
+    this.lists = this.todoService.tasksArray;
     this.isAnyTaskSelected();
   }
 
@@ -23,30 +23,36 @@ export class ListsComponent implements OnInit {
   }
 
   private isAnyTaskSelected(): void {
-    this.toDoService.isSelected();
-    this.selected = this.toDoService.selectedList;
+    this.todoService.isSelected();
+    this.selected = this.todoService.selectedList;
   }
 
   private onSelect(item: Task): void {
-    this.toDoService.onSelect(item);
-    this.lists = this.toDoService.tasksArray;
+    this.todoService.onSelect(item);
+    this.lists = this.todoService.tasksArray;
     this.isAnyTaskSelected();
   }
 
   private addTodo(item: string): void {
-    this.toDoService.addTasks(item);
-    this.lists = this.toDoService.tasksArray;
-    this.isAnyTaskSelected();
+    if (item.trim().length > 0 ) {
+      this.todoService.addTasks(item);
+      this.lists = this.todoService.tasksArray;
+      this.isAnyTaskSelected();
+    }
   }
 
   private removeSelected(): void {
-    this.toDoService.removeSelected();
-    this.lists = this.toDoService.tasksArray;
+    this.todoService.removeSelected();
+    this.lists = this.todoService.tasksArray;
     this.isAnyTaskSelected();
   }
 
   private changeEdit(item): void {
-    this.toDoService.changeIsEdit(item);
-    this.lists = this.toDoService.tasksArray;
+    this.todoService.changeIsEdit(item);
+    this.lists = this.todoService.tasksArray;
+  }
+
+  private refineInput(event): boolean {
+    return TodoService.replaceInput(event);
   }
 }

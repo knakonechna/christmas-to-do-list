@@ -4,6 +4,7 @@
     *ngIf="data.isEdit"
     class="edit-input"
     [(ngModel)]="data.text"
+    (keydown)="refineInput($event)"
     (keyup.enter)="editTodo(data, edit.value)"
   >
   <button
