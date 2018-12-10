@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../components/lists/list';
+import { Task } from '../constants/list';
 import { TASKS } from '../mocks/mock-lists';
 
 @Injectable({

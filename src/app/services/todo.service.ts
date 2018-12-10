@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../components/lists/list';
+import { Task } from '../constants/list';
 import { LocalStorageService } from './local-storage.service';
 import { GetRandomIdService } from './get-random-id.service';
 
@@ -24,6 +24,7 @@ export class TodoService {
   }
   onSelect(item: Task): void {
     this.tasksArray[this.getTaskByID(item.id)].isDone = !item.isDone;
+    this.saveTodoList(this.tasksArray);
   }
   isSelected(): void {
     this.selectedList = this.tasksArray.filter(item => item.isDone).length;

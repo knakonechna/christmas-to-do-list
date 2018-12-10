@@ -18,6 +18,15 @@
   overflow: hidden;
   flex: 2;
 }
+.main-wrap{
+  padding: 45px 0 ;
+}
+
+.title{
+  color: #fff;
+  text-transform: capitalize;
+}
+
 /* Main container styles */
 @media only screen and (max-width: 1024px) {
   .main-wrap{

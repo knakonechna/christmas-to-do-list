@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { TodoService } from '../../services/todo.service';
-import { Task } from './list';
+import { Task } from '../../constants/list';
 
 @Component({
   selector: 'app-lists',
@@ -9,12 +9,12 @@ import { Task } from './list';
 })
 export class ListsComponent implements OnInit {
   constructor(private todoService: TodoService) {}
-  lists: Task[];
+  @Input() tasksArray: Task[];
+  lists: Task[] = this.tasksArray;
   selected: number;
 
   private getTask(): void {
-    this.todoService.saveTodoList(JSON.parse(localStorage.getItem('tasks')));
-    this.lists = this.todoService.tasksArray;
+    this.lists = this.tasksArray;
     this.isAnyTaskSelected();
   }
 

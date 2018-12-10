@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TodoService } from '../../services/todo.service';
-import { Task } from '../lists/list';
+import { Task } from '../../constants/list';
 
 @Component({
   selector: 'app-edit-input',

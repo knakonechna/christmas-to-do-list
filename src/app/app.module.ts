@@ -8,9 +8,9 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import {MatButtonModule} from '@angular/material';
 import { HeaderComponent } from './components/header/header.component';
 import { EditInputComponent } from './components/edit-input/edit-input.component';
-import { ActiveTasksComponent } from './active-tasks/active-tasks.component';
-import { CompletedTasksComponent } from './completed-tasks/completed-tasks.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { ActiveTasksComponent } from './pages/active-tasks/active-tasks.component';
+import { CompletedTasksComponent } from './pages/completed-tasks/completed-tasks.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
