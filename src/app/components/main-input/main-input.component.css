@@ -1,0 +1,60 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/*subtitle style*/
+.subtitle{
+  color: #fff;
+  font-size: 18px;
+}
+.count-of-tasks{
+  font-size: 25px;
+  text-decoration: underline;
+}
+/*subtitle style*/
+
+/*input style*/
+.wrap-for-input{
+  display: flex;
+  width: 100%;
+  flex: 2 0;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.input-for-to-do{
+  width: 75%;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+  border: 0;
+  padding-left: 15px;
+}
+
+.edit-input{
+  width: 100%
+}
+
+.add-new-to-do{
+  background: #649477;
+  width: 25%;
+}
+/*input style*/
+/*prompt style*/
+.prompt-text{
+  color: #fff;
+  display: block;
+  text-align: left;
+  line-height: 0px;
+  padding-left: 10px;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+/*prompt style*/
+@media only screen and (max-width: 480px) {
+  .wrap-for-input{
+    flex-wrap: wrap;
+  }
+
+  .input-for-to-do, .add-new-to-do{
+    width: 100%;
+  }
+}

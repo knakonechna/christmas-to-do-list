@@ -1,44 +1,39 @@
 <div>
-  <h2 class="subtitle">
+  <h2 class="subtitle" *ngIf="isDashboard">
     Нou have <span class="count-of-tasks">{{lists.length}}</span> assignments that you must do before christmas is coming
   </h2>
-  <div class="wrap-for-input">
-    <input
-      type="text"
-      class="input-for-to-do"
-      placeholder="A goal that you would like to fulfill before Christmas"
-      (keyup.enter)="addTodo(input.value); input.value=''"
-      (keydown)="refineInput($event)"
-      #input>
-    <button
-      (click)="addTodo(input.value); input.value=''"
-      class="add-new-to-do"
-      mat-raised-button
-    >
-      Add New To Do
-    </button>
-  </div>
-  <span class="prompt-text">*choose tasks that you completed</span>
+  <h2 class="subtitle" *ngIf="isActiveTasks">
+    Нou have <span class="count-of-tasks">{{lists.length}}</span> active task
+  </h2>
+  <h2 class="subtitle" *ngIf="!isActiveTasks && !isDashboard">
+    Нou have <span class="count-of-tasks">{{lists.length}}</span> completed task
+  </h2>
+  <app-main-input
+    *ngIf="isDashboard"
+    (updateTaskArray)="updateTasks()"
+    [isActiveTasks]="isActiveTasks"
+    [isDashboard]="isDashboard"
+    [tasksArray]="tasksArray"></app-main-input>
   <ul class="lists">
     <li
-      *ngFor="let list of lists"
-      [class.selected]="list.isDone"
+      *ngFor="let list of lists; let i = index"
+      [class.selected]="isDashboard && list.isDone"
     >
       <div
         class="task-view"
         *ngIf="!list.isEdit"
-        (click)="onSelect(list)"
+        (click)="isDashboard && onSelect(list)"
       >
         <span
         >
-          {{list.text}}
+          {{ i + 1 }} - {{list.text}}
         </span>
       </div>
       <button
         mat-raised-button
         class="edit-tasks"
         (click)="changeEdit(list)"
-        *ngIf="!list.isEdit"
+        *ngIf="!list.isEdit && isDashboard"
       >
         Edit
       </button>
@@ -50,7 +45,7 @@
       ></app-edit-input>
     </li>
   </ul>
-  <div *ngIf="selected" class="remove-button-wrap">
+  <div *ngIf="selected && isDashboard" class="remove-button-wrap">
     <button
       (click)="removeSelected()"
       class="remove-selected"

@@ -9,7 +9,7 @@
 .main-wrap{
   width: 50%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 /*Header style*/
 
@@ -32,6 +32,7 @@
   align-items: center;
   cursor: pointer;
   padding: 0px 17px;
+  font-weight: bold;
 }
 
 .header-nav li:last-child{
@@ -39,5 +40,13 @@
 }
 .header-nav li:hover{
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.header-title{
+  color: #fff;
+  text-transform: capitalize;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-weight: bold;
+  align-self: center;
 }
 /*Header list style*/

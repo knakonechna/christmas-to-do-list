@@ -22,5 +22,8 @@ export class DashboardComponent implements OnInit {
       this.allTasks = this.todoService.tasksArray;
     }
   }
+  updateTaskArray(): void {
+    this.allTasks = this.todoService.tasksArray;
+  }
 
 }

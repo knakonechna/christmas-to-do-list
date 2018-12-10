@@ -1,0 +1,19 @@
+<div>
+  <div class="wrap-for-input">
+    <input
+      type="text"
+      class="input-for-to-do"
+      placeholder="A goal that you would like to fulfill before Christmas"
+      (keyup.enter)="addTodo(input.value); input.value=''"
+      (keydown)="refineInput($event)"
+      #input>
+    <button
+      (click)="addTodo(input.value); input.value=''"
+      class="add-new-to-do"
+      mat-raised-button
+    >
+      Add New To Do
+    </button>
+  </div>
+  <span class="prompt-text" *ngIf="isDashboard">*choose tasks that you completed</span>
+</div>

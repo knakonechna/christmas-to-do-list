@@ -11,6 +11,7 @@ import { EditInputComponent } from './components/edit-input/edit-input.component
 import { ActiveTasksComponent } from './pages/active-tasks/active-tasks.component';
 import { CompletedTasksComponent } from './pages/completed-tasks/completed-tasks.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MainInputComponent } from './components/main-input/main-input.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     EditInputComponent,
     ActiveTasksComponent,
     CompletedTasksComponent,
-    DashboardComponent
+    DashboardComponent,
+    MainInputComponent
   ],
   imports: [
     BrowserModule,

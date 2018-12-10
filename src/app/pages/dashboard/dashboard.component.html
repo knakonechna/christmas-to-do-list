@@ -1,3 +1,7 @@
  <div class="main-wrap">
-    <app-lists [tasksArray]="allTasks"></app-lists>
+    <app-lists
+      [tasksArray]="allTasks"
+      [isDashboard]="true"
+      (updateTaskArray)="updateTaskArray()"
+    ></app-lists>
   </div>

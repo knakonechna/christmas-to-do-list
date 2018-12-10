@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, SimpleChanges, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { Task } from '../../constants/list';
 
@@ -7,19 +7,18 @@ import { Task } from '../../constants/list';
   templateUrl: './lists.component.html',
   styleUrls: ['./lists.component.css'],
 })
-export class ListsComponent implements OnInit {
+export class ListsComponent implements OnChanges {
   constructor(private todoService: TodoService) {}
   @Input() tasksArray: Task[];
+  @Input() isDashboard: boolean;
+  @Input() isActiveTasks: boolean;
+  @Output() updateTaskArray = new EventEmitter<string>();
   lists: Task[] = this.tasksArray;
   selected: number;
 
-  private getTask(): void {
+  ngOnChanges(changes: SimpleChanges) {
     this.lists = this.tasksArray;
     this.isAnyTaskSelected();
-  }
-
-  ngOnInit() {
-    this.getTask();
   }
 
   private isAnyTaskSelected(): void {
@@ -33,26 +32,19 @@ export class ListsComponent implements OnInit {
     this.isAnyTaskSelected();
   }
 
-  private addTodo(item: string): void {
-    if (item.trim().length > 0 ) {
-      this.todoService.addTasks(item);
-      this.lists = this.todoService.tasksArray;
-      this.isAnyTaskSelected();
-    }
-  }
-
   private removeSelected(): void {
     this.todoService.removeSelected();
     this.lists = this.todoService.tasksArray;
     this.isAnyTaskSelected();
+    this.updateTaskArray.emit();
   }
 
   private changeEdit(item): void {
     this.todoService.changeIsEdit(item);
     this.lists = this.todoService.tasksArray;
   }
-
-  private refineInput(event): boolean {
-    return TodoService.replaceInput(event);
+  updateTasks() {
+    this.updateTaskArray.emit();
+    this.lists = this.todoService.tasksArray;
   }
 }
